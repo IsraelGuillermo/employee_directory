@@ -1,5 +1,7 @@
-import React from 'react';
+import GetEmployees from './components/GetEmployees';
 
-function App() {}
+function App() {
+  return <GetEmployees />;
+}
 
 export default App;
