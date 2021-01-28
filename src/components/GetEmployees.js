@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import API from '../utils/API';
-import Table from './table';
 import Container from './container';
 import SearchForm from './searchForm';
+import TableBody from './TableBody';
+import TableHead from './TableHead';
+import Table from './Table';
 
 class GetEmployees extends Component {
   constructor(props) {
@@ -19,22 +21,28 @@ class GetEmployees extends Component {
     API.getRandomEmployees()
       .then((res) => {
         this.setState({ employees: res.data.results });
-        console.log(this.state);
       })
       .catch((err) => console.log(err));
   };
 
   render() {
     if (this.state.employees.length > 1) {
+      console.log(this.state.employees);
       return (
         <div>
           <Container>
             <SearchForm />
-            <Table>
-              {this.state.employees.map((employee) => {
-                return <h1 key={employee.login.uuid}>{employee.name.first}</h1>;
-              })}
-            </Table>
+
+            <TableHead>
+              {this.state.employees.map((employee) => (
+                <TableBody
+                  first={employee.name.first}
+                  last={employee.name.last}
+                  email={employee.email}
+                  cell={employee.cell}
+                />
+              ))}
+            </TableHead>
           </Container>
         </div>
       );
