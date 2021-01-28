@@ -3,7 +3,6 @@ import API from '../utils/API';
 import Container from './container';
 import SearchForm from './searchForm';
 import TableBody from './TableBody';
-import TableHead from './TableHead';
 import Table from './Table';
 
 class GetEmployees extends Component {
@@ -33,7 +32,7 @@ class GetEmployees extends Component {
           <Container>
             <SearchForm />
 
-            <TableHead>
+            <Table>
               {this.state.employees.map((employee) => (
                 <TableBody
                   first={employee.name.first}
@@ -42,7 +41,7 @@ class GetEmployees extends Component {
                   cell={employee.cell}
                 />
               ))}
-            </TableHead>
+            </Table>
           </Container>
         </div>
       );
