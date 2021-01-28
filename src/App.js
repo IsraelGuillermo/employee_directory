@@ -1,7 +1,11 @@
 import GetEmployees from './components/GetEmployees';
 
 function App() {
-  return <GetEmployees />;
+  return (
+    <div>
+      <GetEmployees />
+    </div>
+  );
 }
 
 export default App;
