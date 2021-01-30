@@ -6,13 +6,12 @@ function SearchForm(props) {
       <div className="row">
         <div className="col">
           <input
-            value={props.search}
             onChange={props.handleInputChange}
             type="text"
             className="form-control mb-4"
             placeholder="Search for an employee"
             id="employee-search"
-          />{' '}
+          />
         </div>
       </div>
     </form>

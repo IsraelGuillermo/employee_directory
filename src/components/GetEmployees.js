@@ -9,7 +9,9 @@ class GetEmployees extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      employees: []
+      employees: [],
+      // input: '',
+      filtered: []
     };
   }
   componentDidMount() {
@@ -21,28 +23,39 @@ class GetEmployees extends Component {
       .then((res) => {
         this.setState({ employees: res.data.results });
       })
+      .then(() => {
+        this.setState({ filtered: this.state.employees });
+      })
       .catch((err) => console.log(err));
   };
 
   handleInputChange = (event) => {
-    this.state.employees.filter((employee) => {
-      let search = event.target.value;
-      employee.name.first.includes(search);
+    event.preventDefault();
+    this.findEmployees(event.target.value);
+  };
+
+  findEmployees = (name) => {
+    const updatedEmployees = this.state.employees.filter((emp) => {
+      let empName = emp.name.first;
+      return empName.toLowerCase().includes(name.toLowerCase());
     });
+    this.setState({ filtered: updatedEmployees });
+    return updatedEmployees;
   };
 
   render() {
+    console.log(this.state.filtered);
+
     if (this.state.employees.length > 1) {
-      console.log(this.state.employees);
       return (
         <div>
           <Container>
-            <SearchForm />
+            <SearchForm handleInputChange={this.handleInputChange} />
 
             <Table>
-              {this.state.employees.map((employee) => (
+              {this.state.filtered.map((employee) => (
                 <TableBody
-                  uuid={employee.login.uuid}
+                  key={employee.login.uuid}
                   first={employee.name.first}
                   last={employee.name.last}
                   email={employee.email}
