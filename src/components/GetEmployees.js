@@ -24,6 +24,13 @@ class GetEmployees extends Component {
       .catch((err) => console.log(err));
   };
 
+  handleInputChange = (event) => {
+    this.state.employees.filter((employee) => {
+      let search = event.target.value;
+      employee.name.first.includes(search);
+    });
+  };
+
   render() {
     if (this.state.employees.length > 1) {
       console.log(this.state.employees);
@@ -35,6 +42,7 @@ class GetEmployees extends Component {
             <Table>
               {this.state.employees.map((employee) => (
                 <TableBody
+                  uuid={employee.login.uuid}
                   first={employee.name.first}
                   last={employee.name.last}
                   email={employee.email}
