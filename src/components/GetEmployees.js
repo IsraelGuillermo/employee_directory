@@ -10,7 +10,6 @@ class GetEmployees extends Component {
     super(props);
     this.state = {
       employees: [],
-      // input: '',
       filtered: []
     };
   }
@@ -43,6 +42,10 @@ class GetEmployees extends Component {
     return updatedEmployees;
   };
 
+  sortEmployeesByName = (event) => {
+    console.log('Clicked');
+  };
+
   render() {
     console.log(this.state.filtered);
 
@@ -56,6 +59,8 @@ class GetEmployees extends Component {
               {this.state.filtered.map((employee) => (
                 <TableBody
                   key={employee.login.uuid}
+                  photo={employee.picture.thumbnail}
+                  sort={this.sortEmployeesByName}
                   first={employee.name.first}
                   last={employee.name.last}
                   email={employee.email}
