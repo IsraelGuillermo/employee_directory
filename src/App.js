@@ -1,5 +1,6 @@
 import GetEmployees from './components/GetEmployees';
 import Jumbotron from './components/jumbotron';
+import './styles/style.css';
 
 function App() {
   return (

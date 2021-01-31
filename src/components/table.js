@@ -2,8 +2,8 @@ import React from 'react';
 
 function Table(props) {
   return (
-    <div className="table-responsive">
-      <table className="table table-striped table-dark rounded text-center ">
+    <div className="table-responsive ">
+      <table className="table table-striped table-dark rounded text-center">
         <thead>
           <tr>
             <th scope="col">Photo</th>

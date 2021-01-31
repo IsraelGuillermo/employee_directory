@@ -4,3 +4,8 @@ html body {
 .fa-caret-down {
   font-size: 1.5em;
 }
+
+.overflow {
+  overflow: scroll;
+  height: 60vh;
+}

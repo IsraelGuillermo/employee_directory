@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/style.css';
 
 function TableBody(props) {
   return (

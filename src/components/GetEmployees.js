@@ -75,18 +75,20 @@ class GetEmployees extends Component {
         <div>
           <Container>
             <SearchForm handleInputChange={this.handleInputChange} />
-            <Table sortEmployeesByName={this.sortEmployeesByName}>
-              {this.state.filtered.map((employee) => (
-                <TableBody
-                  key={employee.login.uuid}
-                  photo={employee.picture.thumbnail}
-                  first={employee.name.first}
-                  last={employee.name.last}
-                  email={employee.email}
-                  cell={employee.cell}
-                />
-              ))}
-            </Table>
+            <div className="overflow">
+              <Table sortEmployeesByName={this.sortEmployeesByName}>
+                {this.state.filtered.map((employee) => (
+                  <TableBody
+                    key={employee.login.uuid}
+                    photo={employee.picture.thumbnail}
+                    first={employee.name.first}
+                    last={employee.name.last}
+                    email={employee.email}
+                    cell={employee.cell}
+                  />
+                ))}
+              </Table>
+            </div>
           </Container>
         </div>
       );
