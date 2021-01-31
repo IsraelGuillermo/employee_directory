@@ -43,6 +43,7 @@ class GetEmployees extends Component {
   };
 
   sortEmployeesByName = (event) => {
+    event.preventDefault();
     console.log('Clicked');
   };
 
@@ -54,7 +55,6 @@ class GetEmployees extends Component {
         <div>
           <Container>
             <SearchForm handleInputChange={this.handleInputChange} />
-
             <Table>
               {this.state.filtered.map((employee) => (
                 <TableBody
