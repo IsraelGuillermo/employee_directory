@@ -10,7 +10,8 @@ class GetEmployees extends Component {
     super(props);
     this.state = {
       employees: [],
-      filtered: []
+      filtered: [],
+      sorted: ''
     };
   }
   componentDidMount() {
@@ -44,7 +45,26 @@ class GetEmployees extends Component {
 
   sortEmployeesByName = (event) => {
     event.preventDefault();
-    console.log('Clicked');
+    console.log('clicked');
+    const sortedEmployess = this.state.filtered.sort(function (a, b) {
+      let nameA = a.name.first;
+      let nameB = b.name.first;
+      if (nameA < nameB) {
+        console.log(nameA);
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+      return 0;
+    });
+    if (this.state.sorted === 'DESC') {
+      sortedEmployess.reverse();
+      this.setState({ sorted: 'ASC' });
+    } else {
+      this.setState({ sorted: 'DESC' });
+    }
+    this.setState({ filtered: sortedEmployess });
   };
 
   render() {
@@ -55,12 +75,11 @@ class GetEmployees extends Component {
         <div>
           <Container>
             <SearchForm handleInputChange={this.handleInputChange} />
-            <Table>
+            <Table sortEmployeesByName={this.sortEmployeesByName}>
               {this.state.filtered.map((employee) => (
                 <TableBody
                   key={employee.login.uuid}
                   photo={employee.picture.thumbnail}
-                  sort={this.sortEmployeesByName}
                   first={employee.name.first}
                   last={employee.name.last}
                   email={employee.email}

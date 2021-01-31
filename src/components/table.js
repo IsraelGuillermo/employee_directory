@@ -7,7 +7,7 @@ function Table(props) {
         <thead>
           <tr>
             <th scope="col">Photo</th>
-            <th scope="col" onClick={props.sort}>
+            <th scope="col" onClick={props.sortEmployeesByName}>
               First
               <span>
                 <i className="fas fa-caret-down "></i>
