@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack://src/styles/style.css"],"names":[],"mappings":"AAAA,UACE,qBACF,CACA,eACE,eACF,CAEA,UACE,eAAgB,CAChB,WACF","file":"main.e8b23308.chunk.css","sourcesContent":["html body {\n  background-color: aqua;\n}\n.fa-caret-down {\n  font-size: 1.5em;\n}\n\n.overflow {\n  overflow: scroll;\n  height: 60vh;\n}\n"]}
